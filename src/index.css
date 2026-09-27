@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  /* ========================================================
+     VARIÁVEIS GLOBAIS CENTRALIZADAS DE OPACIDADE E BLUR
+     ======================================================== */
+  /* Opacidade e blur das seções translúcidas (0px de blur para nitidez máxima do vídeo da loja) */
+  --section-overlay-opacity: 0.35;
+  --section-overlay-blur: 0px;
+
+  /* Seções com contraste ligeiramente superior (seções alternadas) */
+  --section-dark-overlay-opacity: 0.42;
+  --section-dark-overlay-blur: 0px;
+
+  /* Cards internos de destaque (cardápio, fotos, horários) */
+  --card-overlay-opacity: 0.50;
+  --card-overlay-blur: 3px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: transparent !important;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: transparent !important;
+    color: #F5F5F5;
+    overflow-x: hidden;
+  }
+  #root {
+    background-color: transparent !important;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+/* 100dvh / 100dvw with fallback in vh / vw via @supports */
+.w-viewport {
+  width: 100vw;
+}
+.h-viewport {
+  height: 100vh;
+}
+.min-h-viewport {
+  min-height: 100vh;
+}
+
+@supports (width: 100dvw) {
+  .w-viewport {
+    width: 100dvw;
+  }
+}
+
+@supports (height: 100dvh) {
+  .h-viewport {
+    height: 100dvh;
+  }
+  .min-h-viewport {
+    min-height: 100dvh;
+  }
+}
+
+/* Fixed background store canvas */
+.fixed-store-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@supports (width: 100dvw) and (height: 100dvh) {
+  .fixed-store-canvas {
+    width: 100dvw;
+    height: 100dvh;
+  }
+}
+
+/* Seções translúcidas nítidas com controle via variáveis CSS globais */
+.section-translucent {
+  background-color: rgba(10, 16, 11, var(--section-overlay-opacity)) !important;
+  backdrop-filter: blur(var(--section-overlay-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--section-overlay-blur)) !important;
+}
+
+.section-translucent-dark {
+  background-color: rgba(6, 10, 7, var(--section-dark-overlay-opacity)) !important;
+  backdrop-filter: blur(var(--section-dark-overlay-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--section-dark-overlay-blur)) !important;
+}
+
+.card-translucent {
+  background-color: rgba(12, 22, 14, var(--card-overlay-opacity)) !important;
+  backdrop-filter: blur(var(--card-overlay-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--card-overlay-blur)) !important;
+}
+
+/* Gradientes escuros pontuais posicionados estritamente atrás dos blocos de texto */
+.text-contrast-box {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 65%, transparent 100%);
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: 1.25rem;
+}
+
+.text-contrast-pill {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0.48) 100%);
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.75rem;
+}
+
+/* Fotos flutuantes sobre o vídeo de fundo da loja (sem container/card em volta) */
+.floating-photo {
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-photo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Sombra reforçada de texto para legibilidade total sobre o vídeo nítido */
+.title-shadow {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95), 0 4px 14px rgba(0, 0, 0, 0.85);
+}
+
+.title-shadow-strong {
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.98), 0 6px 24px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 1);
+}
+
+/* Animação sutil e contínua de pulso/glow respirando no botão CTA principal */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.45), 0 6px 20px rgba(179, 18, 23, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px 3px rgba(212, 175, 55, 0.65), 0 8px 26px rgba(179, 18, 23, 0.6);
+    transform: scale(1.02);
+  }
+}
+
+.btn-pulse-glow {
+  animation: pulseGlow 2.6s ease-in-out infinite;
+}
+
+/* Gradiente dourado metálico brilhante com suporte cross-browser total */
+.metallic-gold-text {
+  background: linear-gradient(135deg, #FFFCE0 0%, #FFDF6D 25%, #E2B236 50%, #FFF3B3 75%, #D4AF37 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #FFDF6D;
+  display: inline-block;
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.95));
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Custom scrollbar to match bar theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #B31217;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Safe area bottom padding for mobile browsers */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}

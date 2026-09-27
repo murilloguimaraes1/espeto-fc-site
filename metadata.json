@@ -1,0 +1,6 @@
+{
+  "name": "Espeto F.C. - Point de Espetinhos, Cerveja e Futebol",
+  "description": "A melhor vitrine digital do Espeto F.C. O point oficial para assistir ao futebol com os amigos, comer churrasco de qualidade e beber cerveja gelada.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
