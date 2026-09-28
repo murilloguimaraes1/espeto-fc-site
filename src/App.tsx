@@ -38,7 +38,7 @@ import medalhaoCupimQueijoImg from './assets/images/medalhao_cupim_queijo.jpg';
 // Core Parameters
 const WHATSAPP_NUMBER = "5517991056116";
 const INSTAGRAM_URL = "https://www.instagram.com/espeto.fc/";
-const CARDAPIO_URL = "https://drive.google.com/drive/folders/1kYDVXrNFm3-TOz_M9Mk9lHc6Hhk5nldm";
+const CARDAPIO_URL = "https://drive.google.com/file/d/1iXmC9G23-8UWkLdluLWcniJfv0-0eYaA/view?usp=sharing";
 
 // Frame counts
 const TOTAL_LOJA_FRAMES = 183;

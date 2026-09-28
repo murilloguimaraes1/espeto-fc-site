@@ -49,7 +49,7 @@ Todos os parâmetros principais e dados de contato estão concentrados no topo d
   ```
 - **Link do Cardápio (Google Drive):**
   ```ts
-  const CARDAPIO_URL = "https://drive.google.com/drive/folders/1kYDVXrNFm3-TOz_M9Mk9lHc6Hhk5nldm";
+  const CARDAPIO_URL = "https://drive.google.com/file/d/1iXmC9G23-8UWkLdluLWcniJfv0-0eYaA/view?usp=sharing";
   ```
 - **Slides dos Destaques da Chapa:** Array `VISUAL_HIGHLIGHTS` em `src/App.tsx`.
 - **Slides do Ambiente (Clima de Arquibancada):** Array `AMBIENTE_SLIDES` em `src/App.tsx`.
